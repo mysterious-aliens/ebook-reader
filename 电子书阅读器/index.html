@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电子书阅读器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 上传页面（初始状态） -->
+  <div id="uploadPage" class="page active">
+    <div class="upload-container">
+      <div class="upload-icon">📖</div>
+      <h1>电子书阅读器</h1>
+      <p class="upload-tip">上传 TXT 文件，开始阅读</p>
+      <input type="file" id="fileInput" accept=".txt" hidden>
+      <button id="uploadBtn" class="btn btn-primary">选择文件</button>
+      <p class="upload-note">支持 UTF-8 编码的 TXT 文件，文件不会上传到服务器，全部在本地处理</p>
+    </div>
+  </div>
+
+  <!-- 阅读页面（阅读状态） -->
+  <div id="readerPage" class="page">
+    <!-- 顶部栏 -->
+    <div class="top-bar">
+      <div class="top-left">
+        <button id="backBtn" class="btn btn-icon" title="返回">←</button>
+        <span id="fileName" class="file-name">未命名.txt</span>
+      </div>
+      <div class="top-right">
+        <button id="settingsBtn" class="btn btn-icon" title="设置">⚙️</button>
+      </div>
+    </div>
+
+    <!-- 阅读内容区 -->
+    <div class="content-area">
+      <div id="content" class="content"></div>
+    </div>
+
+    <!-- 底部栏 -->
+    <div class="bottom-bar">
+      <button id="prevBtn" class="btn" disabled>上一页</button>
+      <div class="page-info">
+        <span id="currentPage">1</span> / <span id="totalPages">1</span>
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+      </div>
+      <button id="nextBtn" class="btn">下一页</button>
+    </div>
+
+    <!-- 设置面板 -->
+    <div id="settingsPanel" class="settings-panel">
+      <div class="settings-header">
+        <h3>阅读设置</h3>
+        <button id="closeSettings" class="btn btn-icon">×</button>
+      </div>
+      <div class="settings-item">
+        <label>字号：<span id="fontSizeValue">18px</span></label>
+        <input type="range" id="fontSizeSlider" min="14" max="28" value="18">
+      </div>
+      <div class="settings-item">
+        <label>行间距：<span id="lineHeightValue">1.8</span></label>
+        <input type="range" id="lineHeightSlider" min="1.2" max="2.5" step="0.1" value="1.8">
+      </div>
+      <div class="settings-item">
+        <label>主题：</label>
+        <div class="theme-options">
+          <button class="theme-btn active" data-theme="light">☀️ 浅色</button>
+          <button class="theme-btn" data-theme="dark">🌙 深色</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
